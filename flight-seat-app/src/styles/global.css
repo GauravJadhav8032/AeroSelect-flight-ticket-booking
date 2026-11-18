@@ -1,0 +1,214 @@
+/* ============================================================
+   GLOBAL.CSS — Swiss Editorial, Warm Ivory Palette
+   ============================================================ */
+
+/* ── Custom Properties ──────────────────────────────────────── */
+:root {
+  /* Palette */
+  --ivory:        #F5F2ED;
+  --ivory-deep:   #EDE9E2;
+  --ivory-border: #DDD8CF;
+  --stone-light:  #C8C2B8;
+  --stone:        #9A9189;
+  --charcoal:     #2C2825;
+  --charcoal-mid: #4A4540;
+  --charcoal-soft:#6B6560;
+  --bronze:       #9B7E5A;
+  --bronze-light: #C4A882;
+  --bronze-pale:  #F0E8DC;
+
+  /* Seat colours */
+  --seat-available:    #E8E4DD;
+  --seat-avail-hover:  #D8D2C8;
+  --seat-occupied:     #C5C0B9;
+  --seat-occupied-txt: #9A9189;
+  --seat-selected:     #2C2825;
+  --seat-selected-txt: #F5F2ED;
+  --seat-other:        #A09890;
+  --seat-free:         #D4EAD4;
+  --seat-free-hover:   #BDDCBD;
+  --seat-premium-bg:   #EDE2D4;
+  --seat-premium-brdr: #C4A882;
+  --seat-extra-bg:     #E4EBF0;
+  --seat-extra-brdr:   #8AAABB;
+
+  /* Typography */
+  --font-sans:   'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Layout */
+  --panel-gap:    24px;
+  --radius-sm:    4px;
+  --radius-md:    8px;
+  --radius-lg:    16px;
+  --shadow-soft:  0 1px 3px rgba(44,40,37,0.08), 0 4px 16px rgba(44,40,37,0.06);
+  --shadow-card:  0 2px 8px rgba(44,40,37,0.10), 0 8px 32px rgba(44,40,37,0.07);
+  --transition:   all 0.18s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--ivory);
+  color: var(--charcoal);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: var(--transition);
+}
+
+button:disabled { cursor: not-allowed; }
+
+button:focus-visible {
+  outline: 2px solid var(--charcoal);
+  outline-offset: 2px;
+}
+
+ul { list-style: none; }
+
+/* ── Typography ─────────────────────────────────────────────── */
+h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; }
+
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: var(--space-3);
+}
+
+/* ── App Shell ──────────────────────────────────────────────── */
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── Header ─────────────────────────────────────────────────── */
+.app-header {
+  background: var(--charcoal);
+  color: var(--ivory);
+  padding: 0 var(--space-6);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.brand-mark {
+  font-size: 18px;
+  color: var(--bronze-light);
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--ivory);
+}
+
+.flight-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.flight-route {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ivory);
+}
+
+.flight-meta {
+  font-size: 11px;
+  color: var(--stone-light);
+  letter-spacing: 0.04em;
+}
+
+/* ── Main Layout ─────────────────────────────────────────────── */
+.app-main {
+  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: var(--space-6) var(--space-6) var(--space-8);
+}
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr 300px;
+  gap: var(--panel-gap);
+  align-items: start;
+}
+
+/* ── Notification ─────────────────────────────────────────────── */
+.notification {
+  position: fixed;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-shadow: var(--shadow-card);
+  animation: notif-in 0.2s ease;
+  max-width: 480px;
+  text-align: center;
+}
+
+.notification-info    { background: var(--charcoal); color: var(--ivory); }
+.notification-error   { background: #8B2020; color: #FDE8E8; }
+.notification-warning { background: #7A5C18; color: #FDF0D5; }
+.notification-success { background: #2A4A32; color: #E8F5E9; }
+
+.notification-icon { font-size: 15px; }
+
+@keyframes notif-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
